@@ -1,0 +1,45 @@
+{
+  "name": "redux-undo-actions",
+  "version": "0.1.0",
+  "description": "Redux middleware for undo/redo actions by dispatching reverting action",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel src -d dist",
+    "clean": "rimraf dist",
+    "test": "mocha --recursive --require babel-register --compilers js:babel-register ./test/*.test.js",
+    "lint": "./node_modules/.bin/eslint ./src ./test --fix",
+    "prepare": "npm run clean && npm run build"
+  },
+  "author": "Taras Zelyk <taraszelyk@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/TarasZelyk/redux-undo-actions/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/TarasZelyk/redux-undo-actions.git"
+  },
+  "keywords": [
+    "redux",
+    "redux-undo",
+    "middleware",
+    "undo",
+    "redo",
+    "undo actions",
+    "reverting action",
+    "opposite action"
+  ],
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.7.0",
+    "redux-mock-store": "^1.5.1",
+    "redux-thunk": "^2.2.0",
+    "rimraf": "^2.6.2"
+  }
+}

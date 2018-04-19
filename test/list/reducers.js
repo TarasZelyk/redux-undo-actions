@@ -2,8 +2,6 @@ import * as types from './types';
 
 const reducer = (state = [], action) => {
     switch (action.type) {
-        case types.FETCH_SUCCESS:
-            return action.items;
         case types.CREATE:
             return [
                 ...state,
@@ -14,8 +12,6 @@ const reducer = (state = [], action) => {
             ];
         case types.REMOVE:
             return state.filter(el => el.id !== action.id);
-        case types.CLEAR:
-            return [];
         default:
             return state;
     }

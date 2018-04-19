@@ -8,5 +8,3 @@ export const historyRedo = (index = 1) => ({ type: types.HISTORY_REDO, index });
 
 export const addToHistory = (action, state) => ({ type: types.HISTORY_ADD, action, state });
 export const clearHistory = () => ({ type: types.HISTORY_CLEAR });
-
-export const undoable = (action) => ({ type: types.UNDOABLE, body: action });

@@ -1,6 +1,6 @@
 {
   "name": "redux-undo-actions",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Redux middleware for undo/redo actions by dispatching reverting action",
   "main": "dist/index.js",
   "scripts": {

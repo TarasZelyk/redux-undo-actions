@@ -1,5 +1,5 @@
 # redux-undo-actions
-
+[![Build Status](https://travis-ci.org/TarasZelyk/redux-undo-actions.svg?branch=master)](https://travis-ci.org/TarasZelyk/redux-undo-actions)
 ## Overview
 redux-undo-actions is a Redux middleware for undo/redo actions. It doesn't change the state as [redux-undo](https://github.com/omnidan/redux-undo). Instead of changing the state of application it dispatches an action that is the opposite of the one that is in the history.
 

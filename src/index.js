@@ -2,9 +2,10 @@ import undoHistory, { getPastHistoryItem, getFutureHistoryItem, canUndo, canRedo
 import * as types from './types';
 import * as undoActions from './actions';
 import * as _ from 'lodash';
-const dispatchSkipActions = (dispatch) => (action) => {
+
+const dispatchActions = (dispatch) => (action) => {
     if (typeof action === 'function') {
-        return action(dispatchSkipActions(dispatch));
+        return action(dispatchActions(dispatch));
     } else {
         return dispatch({ ...action, undoSkipAction: true });
     }
@@ -17,7 +18,7 @@ export const undoActionsMiddleware = config => {
         }
         if (action.type in config.revertibleActions) {
             dispatch(undoActions.addToHistory(action, restState));
-            return dispatchSkipActions(dispatch)(action);
+            return dispatchActions(dispatch)(action);
         } else if (action.type === types.UNDO && canUndo(undoHistory)) {
             const { action: pastAction, state: pastState } = getPastHistoryItem(undoHistory, action.index);
             let revertingAction = config.revertibleActions[pastAction.type];
@@ -27,11 +28,11 @@ export const undoActionsMiddleware = config => {
                 const args = mapStateToArgs(pastAction, pastState);
                 revertingAction = actionCreator(args);
             }
-            return dispatchSkipActions(dispatch)(revertingAction);
+            return dispatchActions(dispatch)(revertingAction);
         } else if (action.type === types.REDO && canRedo(undoHistory)) {
             const { action: futureAction } = getFutureHistoryItem(undoHistory, action.index);
             dispatch(undoActions.historyRedo(action.index));
-            return dispatchSkipActions(dispatch)(futureAction);
+            return dispatchActions(dispatch)(futureAction);
 
         }
         return next(action);

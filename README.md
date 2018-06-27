@@ -67,9 +67,10 @@ export default combineReducers({
     undoHistory
 });
 
-## Undo/Redo Actions
 
 ```
+
+## Undo/Redo Actions
 Then you can use this actions when you want to call undo/redo:
 
 ```js
